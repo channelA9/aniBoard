@@ -35,6 +35,9 @@ Here's a walkthrough of implemented user stories:
 
 <img src='\walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
+Alternatively, check out a working version of the app on Vercel!
+https://ani-board.vercel.app/
+
 GIF created with ScreenToGif
 
 ## Notes
