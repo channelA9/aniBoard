@@ -33,7 +33,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='\walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 Alternatively, check out a working version of the app on Vercel!
 https://ani-board.vercel.app/
@@ -46,4 +46,7 @@ No major issues, except for the fact I did it pretty late...
 
 ## License
 
-    N/A, with thanks to the creators of the Jikan API and MAL for their database.
+    No rights or ownership claimed, with thanks to the creators of the Jikan API and MAL for their database.
+
+    Attribution to 利用者:Kasuga~jawiki for the website svg, Wikipe-tan, licensed under CC-BY-3.0 license
+    https://en.m.wikipedia.org/wiki/File:Wikipe-tan_face.svg
