@@ -6,9 +6,9 @@ import FilterBoard from "./components/FilterBoard";
 import SearchBoard from "./components/SearchBoard";
 import DataBoard from "./components/DataBoard";
 function App() {
-  let queryQueue = [];
+  let queryQueue: any = [];
 
-  const [animes,setAnimeList] = useState([]);
+  const [animes,setAnimeList] = useState<any[]>([]);
 
   const [avgScore, setAvgScore] = useState(0.000);
   const [totalFavs, setTotalFavs] = useState(0);
@@ -24,7 +24,7 @@ function App() {
   })
 
   const updateAnimes = (data: any) => {
-    setAnimeList((prevState) => ([...prevState, ...data]))
+    setAnimeList((prevState: Array<Object>) => ([...prevState, ...data]))
   }
 
   const callAPI = async (query: string) => {
@@ -62,7 +62,7 @@ function App() {
     for (var i=0; i<queryQueue.length; i++) {
       clearTimeout(queryQueue[i]);
     }
-    
+
     let query = `https://api.jikan.moe/v4/anime?limit=100&q=${inputs.title}&sfw&status=${inputs.status}&min_score=${inputs.min_rating}&max_score=${inputs.max_rating}&order_by=${inputs.sort_by}&sort=${inputs.sort_order}`
     callAPI(query).catch(console.error)
   }
