@@ -1,8 +1,9 @@
-# Web Development Project 6 - *Name of App Here*
+# Web Development Project 6 - *aniBoard*
 
-Submitted by: **Your Name Here**
+Submitted by: **Shaun Colegado**
 
-This web app: **insert description**
+This web app: **filters anime from the Jikan API and aggregates data**
+
 
 Time spent: **X** hours spent in total
 
