@@ -40,36 +40,35 @@ const DataBoard = (props: {
   dataScore: Array<Provider>;
   dataType: Array<Object>;
 }) => {
-  const renderCustomizedLabel = ({
-    cx,
-    cy,
-    midAngle,
-    innerRadius,
-    outerRadius,
-    percent,
-    index,
-  }) => {
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-    const x = cx + radius * Math.cos(-midAngle * RADIAN);
-    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+const renderCustomizedLabel = (dataPoints:{
+    cx: number,
+    cy: number,
+    midAngle: number,
+    innerRadius: number,
+    outerRadius: number,
+    percent: number,
+    index: number,
+    }) => {
+    const radius = dataPoints.innerRadius + (dataPoints.outerRadius - dataPoints.innerRadius) * 0.5;
+    const x = dataPoints.cx + radius * Math.cos(-dataPoints.midAngle * RADIAN);
+    const y = dataPoints.cy + radius * Math.sin(-dataPoints.midAngle * RADIAN);
 
     return (
-      <text
+        <text
         x={x}
         y={y}
         fill="white"
         textAnchor={x > cx ? "start" : "end"}
         dominantBaseline="central"
-      >
-        {`${(props.dataScore[index].value != null &&
-          props.dataScore[index].value > 0)
-            ? index + "-" + (index + 1) + `(${(percent * 100).toFixed(0)}%)`
+        >
+        {`${(props.dataScore[dataPoints.index].value != null &&
+            props.dataScore[dataPoints.index].value > 0)
+            ? dataPoints.index + "-" + (dataPoints.index + 1) + `(${(dataPoints.percent * 100).toFixed(0)}%)`
             : ""
         }`}
-      </text>
+        </text>
     );
-  };
-
+    };
   const [graph1, setGraph1] = useState(
     <PieChart width={0} height={0}>
       <Pie
