@@ -58,7 +58,7 @@ const renderCustomizedLabel = (dataPoints:{
         x={x}
         y={y}
         fill="white"
-        textAnchor={x > cx ? "start" : "end"}
+        textAnchor={x > dataPoints.cx ? "start" : "end"}
         dominantBaseline="central"
         >
         {`${(props.dataScore[dataPoints.index].value != null &&
