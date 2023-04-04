@@ -34,20 +34,25 @@ const Dashboard = () => {
     { name: "7", value: 0 },
     { name: "8", value: 0 },
     { name: "9", value: 0 },
-    { name: "10", value: 0 }
+    { name: "10", value: 0 },
   ];
-  const [comprehensiveArrayedAvgData,setComprehensiveArrayedAvgData] = useState([
-    { name: "1", value: 0 },
-    { name: "2", value: 0 },
-    { name: "3", value: 0 },
-    { name: "4", value: 0 },
-    { name: "5", value: 0 },
-    { name: "6", value: 0 },
-    { name: "7", value: 0 },
-    { name: "8", value: 0 },
-    { name: "9", value: 0 },
-    { name: "10", value: 0 }
-  ]);
+
+  const [comprehensiveArrayedAvgData, setComprehensiveArrayedAvgData] =
+    useState([
+      { name: "1", value: 0 },
+      { name: "2", value: 0 },
+      { name: "3", value: 0 },
+      { name: "4", value: 0 },
+      { name: "5", value: 0 },
+      { name: "6", value: 0 },
+      { name: "7", value: 0 },
+      { name: "8", value: 0 },
+      { name: "9", value: 0 },
+      { name: "10", value: 0 },
+    ]);
+
+  let shadowData2: Array<Object> = [];
+  const [comprehensiveTypeData, setTypeDataA] = useState<Array<Object>>([]);
 
   const updateAnimes = (data: any) => {
     setAnimeList((prevState: Array<Object>) => [...prevState, ...data]);
@@ -88,29 +93,31 @@ const Dashboard = () => {
 
   const makeQuery = () => {
     setComprehensiveArrayedAvgData([
-        { name: "1", value: 0 },
-        { name: "2", value: 0 },
-        { name: "3", value: 0 },
-        { name: "4", value: 0 },
-        { name: "5", value: 0 },
-        { name: "6", value: 0 },
-        { name: "7", value: 0 },
-        { name: "8", value: 0 },
-        { name: "9", value: 0 },
-        { name: "10", value: 0 }
-      ]);
+      { name: "1", value: 0 },
+      { name: "2", value: 0 },
+      { name: "3", value: 0 },
+      { name: "4", value: 0 },
+      { name: "5", value: 0 },
+      { name: "6", value: 0 },
+      { name: "7", value: 0 },
+      { name: "8", value: 0 },
+      { name: "9", value: 0 },
+      { name: "10", value: 0 },
+    ]);
     shadowData = [
-        { name: "1", value: 0 },
-        { name: "2", value: 0 },
-        { name: "3", value: 0 },
-        { name: "4", value: 0 },
-        { name: "5", value: 0 },
-        { name: "6", value: 0 },
-        { name: "7", value: 0 },
-        { name: "8", value: 0 },
-        { name: "9", value: 0 },
-        { name: "10", value: 0 }
-      ];
+      { name: "1", value: 0 },
+      { name: "2", value: 0 },
+      { name: "3", value: 0 },
+      { name: "4", value: 0 },
+      { name: "5", value: 0 },
+      { name: "6", value: 0 },
+      { name: "7", value: 0 },
+      { name: "8", value: 0 },
+      { name: "9", value: 0 },
+      { name: "10", value: 0 },
+    ];
+    setTypeDataA([]);
+    shadowData2 = [];
 
     for (var i = 0; i < queryQueue.length; i++) {
       clearTimeout(queryQueue[i]);
@@ -151,7 +158,11 @@ const Dashboard = () => {
       datum.forEach((i) => (total += i));
       setAvgScore(Math.round((total / datum.length) * 100) / 100);
 
-      datum.forEach((i) => shadowData[Math.ceil(i)].value += 1)
+      datum.forEach((i) => {
+        if (shadowData[Math.ceil(i)] != null) {
+          shadowData[Math.ceil(i)].value += 1;
+        }
+      });
       setComprehensiveArrayedAvgData(shadowData);
 
       datum = animes.map((anime) => anime.favorites);
@@ -162,15 +173,24 @@ const Dashboard = () => {
       datum = animes.map((anime) => anime.scored_by);
       total = 0;
       datum.forEach((i) => (total += i));
-      
+
+      animes.forEach((anime) => {
+        shadowData2.push({
+          name: anime.title,
+          members: anime.members,
+          favorites: anime.favorites,
+        });
+      });
+
+      setTypeDataA(shadowData2);
 
       // data
-      
     }
   }, [animes]);
 
-
-  useEffect(() => {console.log(comprehensiveArrayedAvgData)}, [comprehensiveArrayedAvgData])
+  useEffect(() => {
+    console.log(comprehensiveTypeData);
+  }, [comprehensiveTypeData]);
   return (
     <div className="">
       <FilterBoard
@@ -183,6 +203,7 @@ const Dashboard = () => {
         totalReviews={totalReviews}
         avgScore={avgScore}
         dataScore={comprehensiveArrayedAvgData}
+        dataType={comprehensiveTypeData}
       />
       <SearchBoard listAnims={animes} metricMethod={inputs.sort_by} />
     </div>

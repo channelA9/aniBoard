@@ -21,6 +21,18 @@ const AnimeInfoBoard = () => {
         large_image_url: "",
       },
     },
+    title: '',
+    title_japanese: '',
+    synopsis: '',
+    score: 0,
+    rank: 0,
+    source: '',
+    trailer: {
+        embed_url: '',
+    },
+    background: '',
+    year: 0,
+
   });
   
   let valid = false;
@@ -54,7 +66,7 @@ const AnimeInfoBoard = () => {
       score={data.score}
       rank={data.rank}
       source={data.source}
-      trailerUrl={data.trailer?.embed_url ? data.trailer.embed_url : ''}
+      trailerUrl={(data.trailer?.embed_url != null && data.trailer?.embed_url != '')  ? data.trailer.embed_url : ''}
       background={data.background}
       year={data.year}
     />

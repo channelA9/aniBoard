@@ -1,3 +1,51 @@
+# Web Development Project 6 - *Name of App Here*
+
+Submitted by: **Your Name Here**
+
+This web app: **insert description**
+
+Time spent: **X** hours spent in total
+
+## Required Features
+
+The following **required** functionality is completed:
+
+- [X] **The app includes at least two unique chart developed using the fetched data that tell an interesting story**
+- [X] **Clicking on an item in the list view displays more details about it**
+- [X] **Clicking on an item has a direct, unique link to that item's detail view page**
+
+
+The following **optional** features are implemented:
+
+- [ ] The site's customized dashboard contains more content that explains what is interesting about the data
+- [ ] The site allows users to toggle between different data visualizations
+
+The following **additional** features are implemented:
+
+* [X] List anything else that you added to improve the site's functionality!
+    * Tailwind CSS
+    * Anime trailers included for animes that have it on MAL
+    * 404 Page
+
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='walkthrough2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with ScreenToGif
+
+Alternatively, check out the Vercel link!
+
+## Notes
+
+Working with the data-visualizing graph packages was a bit challenging. I struggled trying to 'warp' the data in a way that would make it match onto the boards.
+Making the route navigation was pretty fun though!
+
+
+
+----
+
 # Web Development Project 5 - *aniBoard*
 
 Submitted by: **Shaun Colegado**

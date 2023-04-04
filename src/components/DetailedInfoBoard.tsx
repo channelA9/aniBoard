@@ -6,11 +6,12 @@ const DetailedInfoBoard = (props: {
   title: string;
   title_japanese: string;
   desc: string;
-  score: string;
+  score: number;
   source: string;
-  rank: string;
+  rank: number;
   background: string;
   year:number;
+  trailerUrl:string;
 }) => {
   return (
     <>

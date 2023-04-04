@@ -2,6 +2,21 @@ import React, { useState, PureComponent, useEffect } from "react";
 import { render } from "react-dom";
 
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
+
+
+interface Provider {
+    name: string,
+    value: number
+}
 
 const COLORS = [
   "#000000",
@@ -22,7 +37,8 @@ const DataBoard = (props: {
   avgScore: number;
   totalFavs: number;
   totalReviews: number;
-  dataScore: Array<Object>;
+  dataScore: Array<Provider>;
+  dataType: Array<Object>;
 }) => {
   const renderCustomizedLabel = ({
     cx,
@@ -45,7 +61,11 @@ const DataBoard = (props: {
         textAnchor={x > cx ? "start" : "end"}
         dominantBaseline="central"
       >
-        {`${props.dataScore[index].value > 0 ? index + "-" + (index + 1) + `(${(percent * 100).toFixed(0)}%)` : ""}`}
+        {`${(props.dataScore[index].value != null &&
+          props.dataScore[index].value > 0)
+            ? index + "-" + (index + 1) + `(${(percent * 100).toFixed(0)}%)`
+            : ""
+        }`}
       </text>
     );
   };
@@ -69,6 +89,28 @@ const DataBoard = (props: {
     </PieChart>
   );
 
+  const [graph2, setGraph2] = useState(
+    <BarChart
+      width={500}
+      height={300}
+      data={props.dataType}
+      margin={{
+        top: 5,
+        right: 30,
+        left: 20,
+        bottom: 5,
+      }}
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="name" />
+      <YAxis />
+      <Tooltip />
+      <Legend />
+      <Bar dataKey="Members" fill="#120539" />
+      <Bar dataKey="Favorites" fill="#4714E3" />
+    </BarChart>
+  );
+
   useEffect(() => {
     setGraph1(
       <PieChart width={320} height={320}>
@@ -89,6 +131,30 @@ const DataBoard = (props: {
       </PieChart>
     );
   }, [props.dataScore]);
+
+  useEffect(() => {
+    setGraph2(
+      <BarChart
+        width={600}
+        height={300}
+        data={props.dataType}
+        margin={{
+          top: 20,
+          right: 20,
+          left: 20,
+          bottom: 20,
+        }}
+      >
+        <CartesianGrid strokeDasharray="5 4" />
+        <XAxis dataKey="name" />
+        <YAxis/>
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="members" fill="#120539" />
+        <Bar dataKey="favorites" fill="#4714E3" />
+      </BarChart>
+    );
+  }, [props.dataType]);
   return (
     <div className="w-full max-w-screen-md xl:max-w-screen-lg min-h-64 p-4 mt-2 bg-white  rounded-sm">
       <h2 className="font-bold text-2xl">Data</h2>
@@ -111,6 +177,7 @@ const DataBoard = (props: {
         <div className="flex place-content-center place-items-center flex-col">
           <h3 className="text-4xl">Score Distribution</h3>
         </div>
+        <div className="col-span-2 py-4 border-t my-8">{graph2}</div>
       </div>
     </div>
   );
