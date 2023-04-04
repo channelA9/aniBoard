@@ -8,7 +8,7 @@ const SearchBoard = (props:{listAnims: Array<any>, metricMethod: string}) => {
             animProps = props.listAnims.map(anime => (
                 <Item 
                 title={anime.title}
-                malUrl={anime.url}
+                malId={anime.mal_id}
                 imgUrl={anime.images.webp.large_image_url}
                 metric={""}
                 />
@@ -17,7 +17,7 @@ const SearchBoard = (props:{listAnims: Array<any>, metricMethod: string}) => {
             animProps = props.listAnims.map(anime => (
                 <Item 
                 title={anime.title}
-                malUrl={anime.url}
+                malId={anime.mal_id}
                 imgUrl={anime.images.webp.large_image_url}
                 metric={anime[props.metricMethod]}
                 />
@@ -26,7 +26,7 @@ const SearchBoard = (props:{listAnims: Array<any>, metricMethod: string}) => {
             animProps = props.listAnims.map(anime => (
                 <Item 
                 title={anime.title}
-                malUrl={anime.url}
+                malId={anime.mal_id}
                 imgUrl={anime.images.webp.large_image_url}
                 metric={anime.aired.string}
                 />
@@ -35,7 +35,7 @@ const SearchBoard = (props:{listAnims: Array<any>, metricMethod: string}) => {
             animProps = props.listAnims.map(anime => (
                 <Item 
                 title={anime.title}
-                malUrl={anime.url}
+                malId={anime.mal_id}
                 imgUrl={anime.images.webp.large_image_url}
                 metric={""}
                 />
