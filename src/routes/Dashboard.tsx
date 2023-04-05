@@ -124,6 +124,9 @@ const Dashboard = () => {
     }
 
     let query = `https://api.jikan.moe/v4/anime?limit=100&q=${inputs.title}&sfw&status=${inputs.status}&min_score=${inputs.min_rating}&max_score=${inputs.max_rating}&order_by=${inputs.sort_by}&sort=${inputs.sort_order}`;
+    if (inputs.status == 'upcoming') {
+      query = `https://api.jikan.moe/v4/anime?limit=100&q=${inputs.title}&sfw&status=${inputs.status}&order_by=${inputs.sort_by}&sort=${inputs.sort_order}`;
+    }
     callAPI(query).catch(console.error);
   };
 
